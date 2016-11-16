@@ -11,3 +11,5 @@
 This is a project for the CS343 Final project with Professor Mahadev.
 
 Project contributors are Tyler Lundstrom and Taylor Nock.
+
+Please us the command `git checkout -b {{name}}` to start your own branch and and push completed changes to master.
