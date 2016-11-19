@@ -1,5 +1,14 @@
-<?php require("header.blade.php"); ?>
+<!-- Stored in resources/views/child.blade.php -->
 
+@extends('layouts.app')
+
+@section('title', 'Page Title')
+
+@section('header')
+    @parent
+@endsection
+
+@section('content')
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
@@ -114,5 +123,4 @@
     </div>
   </div>
 </div>
-
-<?php require("footer.blade.php"); ?>
+@endsection
