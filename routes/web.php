@@ -17,3 +17,7 @@ Route::get('/', function () {
 Route::get('/client/createNewClient', function() {
 	return view('client_insert');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
