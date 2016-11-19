@@ -14,6 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/main', function() {
-	return view('main');
+Route::get('/client/createNewClient', function() {
+	return view('client_insert');
 });
