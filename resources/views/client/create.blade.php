@@ -2,38 +2,40 @@
 
 @extends('layouts.template')
 
-@section('title', 'Page Title')
+@section('title', 'Client Creation')
 
 @section('header')
     @parent
 @endsection
 
 @section('content')
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
         <div class="panel-body">
-          <form class="form-horizontal" method="post" action="client_info.php">
+          <form class="form-horizontal" method="post" action="/client">
+          {{ csrf_field() }}
             <h3 class="panel-heading">Add a New Client</h3>
             <hr>
             <h4 class="col-md-offset-4"> Please Provide the Following Information</h4>
             <div class="form-group">
               <label class="col-sm-4 control-label">Company Name: </label>
               <div class="col-sm-6">
-                <input class="form-control" placeholder="Company Name">
+                <input class="form-control" placeholder="Company Name" name="clientName">
               </div>
             </div>
             <div class="form-group">
               <label for="comment" class="control-label col-sm-4">Company Address:</label>
               <div class="col-sm-6">
-                <input class="form-control" placeholder="Company Address">
+                <input class="form-control" placeholder="Company Address" name="address">
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-4 control-label">City: </label>
               <div class="col-sm-6">
-                <input class="form-control" placeholder="City">
+                <input class="form-control" placeholder="City" name="city">
               </div>
             </div>
             <div class="form-group">
@@ -97,24 +99,24 @@
             <div class="form-group">
               <label for="comment" class="control-label col-sm-4">Plant Phone Number:</label>
               <div class="col-sm-6">
-                <input class="form-control" placeholder="123-456-7890">
+                <input class="form-control" placeholder="123-456-7890" name="phoneNumber">
               </div>
             </div>
             <div class="form-group">
               <label for="comment" class="control-label col-sm-4">Plant Contact Name:</label>
               <div class="col-sm-6">
-                <input class="form-control" placeholder="Contact Name">
+                <input class="form-control" placeholder="Contact Name" name="contactName">
               </div>
             </div>
             <div class="form-group">
               <label for="comment" class="control-label col-sm-4">Plant Contact Phone Number:</label>
               <div class="col-sm-6">
-                <input class="form-control" placeholder="123-456-7890">
+                <input class="form-control" placeholder="123-456-7890" name="contactPhoneNumber">
               </div>
             </div>
             <div class="form-group">
               <div class="col-sm-8 col-md-offset-2">
-                  <a href="main.php"><button class="btn btn-block btn-primary" type="submit">Submit</button>
+                  <a href="main.php"><button class="btn btn-block btn-primary" type="submit">Submit</button></a>
               </div>
             </div>
           </form>
@@ -123,4 +125,5 @@
     </div>
   </div>
 </div>
+
 @endsection
