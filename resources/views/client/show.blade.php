@@ -13,7 +13,7 @@
     <div class="col-md-8 col-md-offset-2"><!--Company Info-->
       <div class="panel panel-default">
         <div class="panel-heading clearfix">
-          <h4> {{$client->clientName}} -- Client ID: {{$client->id}}<a href="client_edit.php"><button class="btn btn-warning pull-right">Edit</button></a></h4>
+          <h4> {{$client->clientName}} -- Client ID: {{$client->id}}<a href="/client/{{$client->id}}/edit"><button class="btn btn-warning pull-right">Edit</button></a></h4>
         </div>
         <div class="container">
           <div class="row">

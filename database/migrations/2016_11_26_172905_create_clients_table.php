@@ -20,9 +20,9 @@ class CreateClientsTable extends Migration
             $table->string('address');
             $table->string('city');
             $table->string('state', 2);
-            $table->string('phoneNumber', 11)->nullable();
+            $table->string('phoneNumber', 15)->nullable();
             $table->string('contactName')->nullable();
-            $table->string('contactPhoneNumber', 11)->nullable();
+            $table->string('contactPhoneNumber', 15)->nullable();
             $table->timestamps();
 
         });

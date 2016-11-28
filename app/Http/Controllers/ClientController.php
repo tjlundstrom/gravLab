@@ -29,8 +29,24 @@ class ClientController extends Controller
 	public function store()
 	{
 			$input = Request::all();
-			
+
 			Client::create($input);
+
+			return redirect('client');
+	}
+
+	public function edit($id)
+	{
+			$client = Client::findOrFail($id);
+
+			return view('client.edit', compact('client'));
+	}
+
+	public function update($id, Request $request)
+	{
+			$client = client::findOrFail($id);
+
+			$client->update(Request::all());
 
 			return redirect('client');
 	}
