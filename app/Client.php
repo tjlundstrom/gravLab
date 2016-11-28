@@ -15,4 +15,9 @@ class Client extends Model
     	'contactName',
     	'contactPhoneNumber'
     ];
+
+    public function clientUnits()
+    {
+    		return $this->hasMany('App\ClientUnits');
+    }
 }
