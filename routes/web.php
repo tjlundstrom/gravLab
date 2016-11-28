@@ -21,3 +21,5 @@ Route::get('/home', 'HomeController@index');
 
 Route::resource('client', 'ClientController');
 
+Route::get('/jobs', 'JobController@index');
+
