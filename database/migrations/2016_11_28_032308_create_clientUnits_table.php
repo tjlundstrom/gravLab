@@ -15,12 +15,14 @@ class CreateClientUnitsTable extends Migration
     {
         Schema::create('clientUnits', function (Blueprint $table) 
         {
-            $table->string('id', 45);
+            $table->increments('id');
+            $table->string('unitIdentifier', 45);
             $table->string('unitModel');
             $table->string('permitNumber');
             $table->integer('client_id')->unsigned();
+            $table->timestamps();
 
-            $table->foreign('client_id')->references('id')->on('clients');
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
         });
     }
 
@@ -31,8 +33,8 @@ class CreateClientUnitsTable extends Migration
      */
     public function down()
     {
-        Schema::table('clientUnits', function (Blueprint $table) {
-            //
-        });
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        Schema::dropIfExists('clientUnits');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

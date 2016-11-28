@@ -7,10 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class ClientUnits extends Model
 {
 	protected $fillable = [
-		'id',
+		'unitIdentifier',
 		'unitModel',
-		'permitNumber'
+		'permitNumber',
+		'client_id'
 	];
+
+	public $table = "clientUnits";
 
 	public function client()
 	{

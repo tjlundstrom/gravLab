@@ -45,23 +45,19 @@
     <div class="col-md-8 col-md-offset-2"><!--Company Info-->
       <div class="panel panel-default">
         <div class="panel-heading clearfix">
-          <h4> {{$client->clientName}}'s Units<a href="client_edit.php"><button class="btn btn-warning pull-right">Edit</button></a></h4>
+          <h4> {{$client->clientName}}'s Units<a href="client_edit.php"><button class="btn btn-warning pull-right">Edit</button></a><a href="/clientUnit/create/{{$client->id}}"><button class="btn btn-success pull-right">New</button></a></h4>
         </div>
+        @foreach($units as $unit)
         <div class="container">
           <div class="row">
             <div class="col-md-8">
-              @{{$UnitID}} -- @{{$UnitModel}} -- @{{$PermitNumber}}
+              {{$unit->unitIdentifier}} -- {{$unit->unitModel}} -- {{$unit->permitNumber}}
+              <a href='#'><button class='btn btn-danger'>Delete</button></a>
             </div>
           </div>
         </div>
         <hr>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-8">
-              @{{$UnitID}} -- @{{$UnitModel}} -- @{{$PermitNumber}}
-            </div>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
   </div>

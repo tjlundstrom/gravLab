@@ -2,22 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\ClientUnits;
+use App\Client;
+use Request;
 
 class ClientUnitController extends Controller
 {
-   public function create()
+   public function create($client)
    {
-   		return view('clientUnit.create');
+         $client = Client::findOrFail($client);
+
+   		return view('clientUnit.create', compact('client'));
    }
 
    public function store()
    {
    		$input = Request::all();
 
-   		ClientUnit::create($input);
+   		//ClientUnits::create($input);
 
-   		return redirect('client');
+         $client = $input['client_id'];
+
+         return redirect()->action('ClientController@show', ['client' => $client]);
    }
 
    public function edit($id, $clientId)

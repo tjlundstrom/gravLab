@@ -83,8 +83,15 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <p class="navbar-text">Welcome, {{$_SESSION['username'] or "User"}}</p>
-            <a href="login.php"><button type="button" class="btn btn-primary navbar-btn">Sign in</button></a>
+            <?php $user = Auth::user()->name; ?>
+            <p class="navbar-text">Welcome, {{$user or "User"}}</p>
+              <a href="{{url('/logout')}}" onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                <button type="button" class="btn btn-primary navbar-btn">Sign Out</button>
+              </a>
+              <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+              </form>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->

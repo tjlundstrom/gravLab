@@ -20,5 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::resource('client', 'ClientController');
-Route::get('client/{$id}/unit-edit', 'ClientUnitController@edit');
 
+//Route::resource('clientUnit', 'ClientUnitController');
+
+Route::get('/clientUnit/create/{client}', 'ClientUnitController@create');
+Route::post('/clientUnit', 'ClientUnitController@store');
