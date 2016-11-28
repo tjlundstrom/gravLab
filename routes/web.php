@@ -14,10 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/client/createNewClient', function() {
-	return view('client_insert');
-});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::resource('client', 'ClientController');
+
