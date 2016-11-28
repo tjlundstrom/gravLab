@@ -19,7 +19,7 @@ class ClientUnitController extends Controller
    {
    		$input = Request::all();
 
-   		//ClientUnits::create($input);
+   		ClientUnits::create($input);
 
          $client = $input['client_id'];
 

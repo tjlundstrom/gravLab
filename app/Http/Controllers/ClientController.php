@@ -50,6 +50,8 @@ class ClientController extends Controller
 
 			$client->update(Request::all());
 
-			return redirect('client');
+			$clientId = $client['id'];
+
+         	return redirect()->action('ClientController@show', ['client' => $clientId]);
 	}
 }

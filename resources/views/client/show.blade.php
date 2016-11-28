@@ -13,7 +13,7 @@
     <div class="col-md-8 col-md-offset-2"><!--Company Info-->
       <div class="panel panel-default">
         <div class="panel-heading clearfix">
-          <h4> {{$client->clientName}} -- Client ID: {{$client->id}}<a href="/client/{{$client->id}}/edit"><button class="btn btn-warning pull-right">Edit</button></a></h4>
+          <h4> {{$client->clientName}} -- Client ID: {{$client->id}}<a href="/client/{{$client->id}}/edit"><button class="btn btn-primary pull-right">Edit</button></a></h4>
         </div>
         <div class="container">
           <div class="row">
@@ -45,14 +45,17 @@
     <div class="col-md-8 col-md-offset-2"><!--Company Info-->
       <div class="panel panel-default">
         <div class="panel-heading clearfix">
-          <h4> {{$client->clientName}}'s Units<a href="client_edit.php"><button class="btn btn-warning pull-right">Edit</button></a><a href="/clientUnit/create/{{$client->id}}"><button class="btn btn-success pull-right">New</button></a></h4>
+          <h4> {{$client->clientName}}'s Units<a href="/clientUnit/create/{{$client->id}}"><button class="btn btn-success pull-right">New</button></a></h4>
         </div>
         @foreach($units as $unit)
         <div class="container">
           <div class="row">
             <div class="col-md-8">
-              {{$unit->unitIdentifier}} -- {{$unit->unitModel}} -- {{$unit->permitNumber}}
-              <a href='#'><button class='btn btn-danger'>Delete</button></a>
+              Unit Name: {{$unit->unitIdentifier}} | Unit Model: {{$unit->unitModel}} | Permit Number: {{$unit->permitNumber}}
+              <div class='btn-group' role="group" aria-label="...">
+                <a href="#"><button type='button' class="btn btn-primary">Edit</button></a>
+                <a href='#'><button type='button' class='btn btn-danger'>Delete</button></a>
+              </div>
             </div>
           </div>
         </div>
