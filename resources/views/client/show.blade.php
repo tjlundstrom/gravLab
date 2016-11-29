@@ -52,9 +52,12 @@
           <div class="row">
             <div class="col-md-8">
               Unit Name: {{$unit->unitIdentifier}} | Unit Model: {{$unit->unitModel}} | Permit Number: {{$unit->permitNumber}}
-              <div class='btn-group' role="group" aria-label="...">
-                <a href="#"><button type='button' class="btn btn-primary">Edit</button></a>
-                <a href='#'><button type='button' class='btn btn-danger'>Delete</button></a>
+              <div class='btn-group' role="group">
+                <a href="/clientUnit/edit/{{$client->id}}/{{$unit->id}}"><button type='button' class="btn btn-primary">Edit</button></a>
+                {{ Form::open(array('url' => 'clientUnit/' . $client->id . '/' . $unit->id,)) }}
+                    {{ Form::hidden('_method', 'DELETE') }}
+                    {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+                {{ Form::close() }}
               </div>
             </div>
           </div>
