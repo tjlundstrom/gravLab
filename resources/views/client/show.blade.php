@@ -1,6 +1,6 @@
 @extends('layouts.template')
 
-@section('title', 'All Clients')
+@section('title', 'Selected Client')
 
 @section('header')
 	@parent
@@ -13,7 +13,7 @@
     <div class="col-md-8 col-md-offset-2"><!--Company Info-->
       <div class="panel panel-default">
         <div class="panel-heading clearfix">
-          <h4> {{$client->clientName}} -- Client ID: {{$client->id}}<a href="client_edit.php"><button class="btn btn-warning pull-right">Edit</button></a></h4>
+          <h4> {{$client->clientName}} -- Client ID: {{$client->id}}<a href="/client/{{$client->id}}/edit"><button class="btn btn-primary pull-right">Edit</button></a></h4>
         </div>
         <div class="container">
           <div class="row">
@@ -45,23 +45,25 @@
     <div class="col-md-8 col-md-offset-2"><!--Company Info-->
       <div class="panel panel-default">
         <div class="panel-heading clearfix">
-          <h4> {{$client->clientName}}'s Units<a href="client_edit.php"><button class="btn btn-warning pull-right">Edit</button></a></h4>
+          <h4> {{$client->clientName}}'s Units<a href="/clientUnit/create/{{$client->id}}"><button class="btn btn-success pull-right">New</button></a></h4>
         </div>
+        @foreach($units as $unit)
         <div class="container">
           <div class="row">
-            <div class="col-md-8">
-              @{{$UnitID}} -- @{{$UnitModel}} -- @{{$PermitNumber}}
+            <div class="col-lg-8">
+              <h5>Unit Name: {{$unit->unitIdentifier}} | Unit Model: {{$unit->unitModel}} | Permit Number: {{$unit->permitNumber}}</h5>
+              <div class="row">
+                <a href="/clientUnit/edit/{{$client->id}}/{{$unit->id}}" class="col-md-2 col-md-offset-4"><button type='button' class="btn btn-primary">Edit</button></a>
+                {{ Form::open(array('url' => 'clientUnit/' . $client->id . '/' . $unit->id, 'class' => 'form-inline col-md-2')) }}
+                    {{ Form::hidden('_method', 'DELETE') }}
+                    {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+                {{ Form::close() }}
+              </div>
             </div>
           </div>
         </div>
         <hr>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-8">
-              @{{$UnitID}} -- @{{$UnitModel}} -- @{{$PermitNumber}}
-            </div>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
   </div>

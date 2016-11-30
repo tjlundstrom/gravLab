@@ -1,5 +1,3 @@
-<!-- Stored in resources/views/child.blade.php -->
-
 @extends('layouts.template')
 
 @section('title', 'Client Creation')
@@ -15,8 +13,8 @@
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
         <div class="panel-body">
-          <form class="form-horizontal" method="post" action="/client">
-            @include('client.form', ['submitButtonText' => 'Add New Client'])
+          <form class="form-horizontal" method="post" action="/clientUnit">
+            @include('clientUnit.form', ['submitButtonText' => 'Add New Unit'])
           </form>
         </div>
       </div>
