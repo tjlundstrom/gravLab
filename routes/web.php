@@ -21,5 +21,8 @@ Route::get('/home', 'HomeController@index');
 
 Route::resource('client', 'ClientController');
 
-Route::get('/jobs', 'JobController@index');
-
+Route::get('/clientUnit/create/{client}', 'ClientUnitController@create');
+Route::post('/clientUnit', 'ClientUnitController@store');
+Route::get('clientUnit/edit/{client}/{clientUnit}', 'ClientUnitController@edit');
+Route::patch('clientUnit/{client}/{clientUnit}', 'ClientUnitController@update');
+Route::delete('clientUnit/{client}/{clientUnit}', 'ClientUnitController@destroy');

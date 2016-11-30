@@ -2,7 +2,7 @@
 
 @extends('layouts.template')
 
-@section('title', 'Client Creation')
+@section('title', 'Unit Edit')
 
 @section('header')
     @parent
@@ -15,9 +15,10 @@
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
         <div class="panel-body">
-          <form class="form-horizontal" method="post" action="/client">
-            @include('client.form', ['submitButtonText' => 'Add New Client'])
-          </form>
+          {!! Form::model($clientUnit, ['action' => ['ClientUnitController@update', $client->id, $clientUnit->id], 'method' => 'PATCH', 'class' => 'form-horizontal']) !!}
+            {{method_field('PATCH')}}
+            @include('clientUnit.form', ['submitButtonText' => 'Update Unit Info'])
+          {!! Form::close() !!}
         </div>
       </div>
     </div>
