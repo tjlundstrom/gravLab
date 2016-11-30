@@ -35,6 +35,7 @@ class ClientController extends Controller
 			Client::create($input);
 
 			return redirect('client');
+
 	}
 
 	public function edit($id)

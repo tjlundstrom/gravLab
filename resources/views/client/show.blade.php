@@ -1,6 +1,6 @@
 @extends('layouts.template')
 
-@section('title', 'All Clients')
+@section('title', 'Selected Client')
 
 @section('header')
 	@parent
@@ -50,11 +50,11 @@
         @foreach($units as $unit)
         <div class="container">
           <div class="row">
-            <div class="col-md-8">
-              Unit Name: {{$unit->unitIdentifier}} | Unit Model: {{$unit->unitModel}} | Permit Number: {{$unit->permitNumber}}
-              <div class='btn-group' role="group">
-                <a href="/clientUnit/edit/{{$client->id}}/{{$unit->id}}"><button type='button' class="btn btn-primary">Edit</button></a>
-                {{ Form::open(array('url' => 'clientUnit/' . $client->id . '/' . $unit->id,)) }}
+            <div class="col-lg-8">
+              <h5>Unit Name: {{$unit->unitIdentifier}} | Unit Model: {{$unit->unitModel}} | Permit Number: {{$unit->permitNumber}}</h5>
+              <div class="row">
+                <a href="/clientUnit/edit/{{$client->id}}/{{$unit->id}}" class="col-md-2 col-md-offset-4"><button type='button' class="btn btn-primary">Edit</button></a>
+                {{ Form::open(array('url' => 'clientUnit/' . $client->id . '/' . $unit->id, 'class' => 'form-inline col-md-2')) }}
                     {{ Form::hidden('_method', 'DELETE') }}
                     {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
                 {{ Form::close() }}
