@@ -98,6 +98,6 @@
   </div>
   <div class="form-group">
     <div class="col-sm-8 col-md-offset-2">
-        <a href="main.php"><button class="btn btn-block btn-primary" type="submit"><?=$submitButtonText; ?></button></a>
+        <button class="btn btn-block btn-primary" type="submit"><?=$submitButtonText; ?></button>
     </div>
   </div>

@@ -18,11 +18,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-
+//Registers all routes for the ClientController
 Route::resource('client', 'ClientController');
-
-Route::get('/clientUnit/create/{client}', 'ClientUnitController@create');
-Route::post('/clientUnit', 'ClientUnitController@store');
-Route::get('clientUnit/edit/{client}/{clientUnit}', 'ClientUnitController@edit');
-Route::patch('clientUnit/{client}/{clientUnit}', 'ClientUnitController@update');
-Route::delete('clientUnit/{client}/{clientUnit}', 'ClientUnitController@destroy');
+//Registers all routes for the JobController
+Route::resource('job', 'JobController');
+//Registers all routes for the ClientUnitsController
+Route::resource('clientUnit', 'ClientUnitController');
+//Registers all route for the JobUnitController
+Route::resource('jobUnits', 'JobUnitController');
+//Registers all route for the JobUnitController
+Route::resource('jobBeakers', 'JobBeakersController');
+//Registers all route for the JobUnitController
+Route::resource('beakers', 'BeakersController');

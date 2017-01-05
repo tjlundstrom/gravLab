@@ -12,7 +12,7 @@
                     <ul class="list-group">
 
                         @foreach($jobs as $job)
-                        <li> {{$job->jobID}} {{$job->jobNumber}} {{$job->clientID}} {{$job->jobTitle}} {{$job->jobType}} {{$job->jobDescription}} </li>
+                        <li> <a href="job/{{$job->id}}"> {{$job->number}} || {{$job->client->clientName}} || {{$job->title}}</a> || {{$job->type}} || {{$job->description}} </li>
                         @endforeach
 
                     </ul>

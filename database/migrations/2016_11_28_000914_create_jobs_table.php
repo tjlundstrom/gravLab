@@ -14,12 +14,15 @@ class CreateJobsTable extends Migration
     public function up()
     {
         Schema::create('jobs', function(Blueprint $table) {
-            $table->increments('jobID');
-            $table->string('jobNumber');
-            $table->integer('clientID');
-            $table->string('jobTitle');
-            $table->string('jobType');
-            $table->string('jobDescription');
+            $table->increments('id');
+            $table->string('number');
+            $table->integer('client_id')->unsigned();
+            $table->string('title');
+            $table->string('type');
+            $table->string('description');
+            $table->timestamps();
+
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
         });
     }
 
@@ -30,6 +33,8 @@ class CreateJobsTable extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('jobs');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

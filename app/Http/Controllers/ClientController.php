@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Client;
 use App\ClientUnits;
+use App\Job;
 use Request;
 
 class ClientController extends Controller
@@ -18,9 +19,18 @@ class ClientController extends Controller
 	public function show($id)
 	{
 			$client = Client::findOrFail($id);
+
+			if (Request::session()->has('client')){
+				Request::session()->forget('client');
+			}
+
+			Request::session()->put('client', $client->id);
+
 			$units = ClientUnits::all()->where('client_id', $id);
 
-			return view('client.show', compact('client', 'units'));
+			$jobs = Job::all()->where('client_id', $id);
+
+			return view('client.show', compact('client', 'units', 'jobs'));
 	}
 
 	public function create()	

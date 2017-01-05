@@ -8,9 +8,9 @@ use Request;
 
 class ClientUnitController extends Controller
 {
-   public function create($client)
+   public function create()
    {
-      $client = Client::findOrFail($client);
+      $client = Client::findOrFail(Request::session()->get('client'));
 
 		return view('clientUnit.create', compact('client'));
    }
@@ -26,33 +26,33 @@ class ClientUnitController extends Controller
       return redirect()->action('ClientController@show', ['client' => $client]);
    }
 
-   public function edit($clientId, $id)
+   public function edit($id)
    {
 		$clientUnit = ClientUnits::findOrFail($id);
 
-      $client = Client::findOrFail($clientId);
+      $client = Client::findOrFail(Request::session()->get('client'));
 
 		return view('clientUnit.edit', compact('clientUnit', 'client'));
 }
 
-   public function update($clientId, $id, Request $request)
+   public function update($id)
    {
       $clientUnit = ClientUnits::findOrFail($id);
 
       $clientUnit->update(Request::all());
 
-      $clientId = $clientId;
+      $clientId = Request::session()->get('client');
 
       return redirect()->action('ClientController@show', ['client' => $clientId]);
    }
 
-   public function destroy($clientId, $id)
+   public function destroy($id)
    {
       $clientUnit = ClientUnits::findOrFail($id);
 
       $clientUnit->delete();
 
-      $clientId = $clientId;
+      $clientId = Request::session()->get('client');
 
       return redirect()->action('ClientController@show', ['client' => $clientId]);
    }

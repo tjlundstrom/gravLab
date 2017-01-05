@@ -19,4 +19,9 @@ class ClientUnits extends Model
 	{
 			return $this->belongsTo('App\Client');
 	}
+
+	public function jobUnits()
+    {
+    		return $this->hasMany('App\JobUnit');
+    }
 }

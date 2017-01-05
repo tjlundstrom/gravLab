@@ -16,8 +16,17 @@ class Client extends Model
     	'contactPhoneNumber'
     ];
 
+    /**
+     * @return ClientUnits object. 
+     * 
+     */
     public function clientUnits()
     {
     		return $this->hasMany('App\ClientUnits');
+    }
+
+    public function job()
+    {
+            return $this->hasMany('App\Job');
     }
 }

@@ -36,18 +36,18 @@
       </div>
     </div>
 
-            <nav class="navbar navbar-default">
-              <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"><a href="/jobs">Jobs</a></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                  </button>
-                  <a class="navbar-brand" href="#">{{$_SESSION['job'] or "Go Get a Job!"}}</a>
-                </div>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">{{$_SESSION['job'] or "Go Get a Job!"}}</a>
+        </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -55,7 +55,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Particulate <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="particulate.php">Search or Start New Job</a></li>
+                <li><a href="/job">List all Job</sa></li>
                 <li><a href="balance_input_display.php">Daily Balance Calibration</a></li>
                 <li><a href="balance_search_list.php">Search Balance Calibrations</a></li>
               </ul>
@@ -71,7 +71,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Beaker Management <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Add New Beakers</a></li>
-                <li><a href="#">Add Beakers to a Unit</a></li>
+                <li><a href="/jobBeakers/create">Add Beakers to a Job</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -96,11 +96,10 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
-  </div>
   @show
 
   @yield('content')
-  </div>
+  
   <!--Scripts here so the page loads faster -->
   <script src="http://code.jquery.com/jquery.js"></script>
   <!-- Latest compiled and minified JavaScript -->

@@ -15,9 +15,9 @@
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
         <div class="panel-body">
-          {!! Form::model($clientUnit, ['action' => ['ClientUnitController@update', $clientUnit->id], 'method' => 'PATCH', 'class' => 'form-horizontal']) !!}
+          {!! Form::model($job, ['action' => ['JobController@update', $job->id], 'method' => 'PATCH', 'class' => 'form-horizontal']) !!}
             {{method_field('PATCH')}}
-            @include('clientUnit.form', ['submitButtonText' => 'Update Unit Info'])
+            @include('job.form', ['submitButtonText' => 'Update Unit Info'])
           {!! Form::close() !!}
         </div>
       </div>
