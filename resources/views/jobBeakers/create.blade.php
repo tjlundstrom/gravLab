@@ -14,7 +14,7 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <form class="form-horizontal" method="post" action="/jobBeakers">
-            @include('jobBeakers.form', ['submitButtonText' => 'Add Beakers'])
+            @include('jobBeakers.formCreate', ['submitButtonText' => 'Add Beakers'])
           </form>
         </div>
       </div>

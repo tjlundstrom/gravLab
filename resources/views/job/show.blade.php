@@ -69,7 +69,40 @@
                 </div>
                 <div class="tab-content">
                   <div role ="tabpanel" class="tab-pane" id="beakers{{$unit->id}}">
-                  Content goes here
+                    <table class="table table-striped">
+                      <tr>
+                        <th> Beaker Number </th>
+                        <th> Run Number </th>
+                        <th> Description </th>
+                        <th> Pre-Weight Average </th>
+                        <th> Post-Weight Average </th>
+                      </tr>
+                    @foreach($jobBeakers as $beaker)
+                      @php
+                        $pre_weight_difference = abs($beaker->pre_weight_1-$beaker->pre_weight_2);
+
+                        $post_weight_difference = abs($beaker->post_weight_1-$beaker->post_weight_2);
+                      @endphp
+                      <tr>
+                        <td> {{$beaker->prefix}}{{$beaker->number}}</td>
+                        <td> {{$beaker->runNumber}}</td>
+                        <td> {{$beaker->description}}</td>
+
+                        @if($pre_weight_difference <= 0.0005)
+                          <td class="success"> {{$pre_weight_difference}} </td>
+                        @else
+                          <td class="danger"> {{$pre_weight_difference}} </td>
+                        @endif
+
+                        @if($post_weight_difference <= 0.0005)
+                          <td class="success"> {{$post_weight_difference}} </td>
+                        @else
+                          <td class="danger"> {{$post_weight_difference}} </td>
+                        @endif
+                      </tr>
+                    @endforeach
+                    </table> 
+                    <a href="jobBeakers/{{$unit->id}}/edit" class="btn btn-block btn-warning" role="button"> Edit </a>
                   </div>
                   <div role ="tabpanel" class="tab-pane" id="filters{{$unit->id}}">
                   Content goes here

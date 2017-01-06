@@ -19,6 +19,8 @@ class JobBeakers extends Model
     	'description'
     ];
 
+    public $table = "JobBeakers";
+
     public function jobUnit()
     {
     		return $this->belongsTo('App\JobUnit');

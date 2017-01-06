@@ -34,6 +34,12 @@ class JobBeakersController extends Controller
 
             $jobBeaker->job_id = $job;
             $jobBeaker->jobUnit_id = $unit;
+            $jobBeaker->pre_weight_1 = 0;
+            $jobBeaker->pre_weight_2 = 0;
+            $jobBeaker->post_weight_1 = 0;
+            $jobBeaker->post_weight_2 = 0;
+            $jobBeaker->runNumber = "";
+            $jobBeaker->description = "";
             if(substr($beaker, 0, 2) == 'CS'){
                 $jobBeaker->prefix = substr($beaker, 0, 2);
 
@@ -43,10 +49,27 @@ class JobBeakersController extends Controller
                 $jobBeaker->number = $beaker;
             }
 
-            array_push($allBeakers, $jobBeaker);
+            $jobBeaker->save();
         }
 
 
-        return $allBeakers;
+        return redirect()->action('JobController@show', ['job' => $job]);
+    }
+
+    public function edit($id)
+    {
+        $job_id = Request::session()->get('job');
+        $jobBeakers = JobBeakers::where('jobUnit_id', $id);
+
+        $client = Client::findOrFail(Request::session()->get('client'));
+
+        return view('jobBeakers.edit', compact('jobBeakers'));
+    }
+
+    public function update()
+    {
+        $input = Request::all();
+
+        return $input;
     }
 }

@@ -6,6 +6,7 @@ use Request;
 use App\Job;
 use App\Client;
 use App\JobUnit;
+use App\JobBeakers;
 
 class JobController extends Controller
 {
@@ -18,7 +19,10 @@ class JobController extends Controller
 
     public function show($jobID)
 	{
+        //Finding neccesary objects
 		$job = Job::findOrFail($jobID);
+        $jobBeakers = JobBeakers::all()->where("job_id", $jobID);
+        $jobUnits = JobUnit::all()->where('job_id', $job->id);
 
         if (Request::session()->has('job')){
             Request::session()->forget('job');
@@ -26,8 +30,7 @@ class JobController extends Controller
 
         Request::session()->put('job', $job->id);
 
-        $jobUnits = JobUnit::all()->where('job_id', $job->id);
-		return view('job.show', compact('job', 'jobUnits'));
+		return view('job.show', compact('job', 'jobUnits', 'jobBeakers'));
 	}
 
     public function create()
