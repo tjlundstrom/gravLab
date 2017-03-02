@@ -8,7 +8,7 @@
 </p>
 
 ## gravLab Built on Laravel
-This is a project for the CS343 Final project with Professor Mahadev.
+This is a project for the CS343 Final project with Professor Mahadev as well as to be used at Air Tox Environmental in the Clean Lab.
 
 Project contributors are Tyler Lundstrom and Taylor Nock.
 
