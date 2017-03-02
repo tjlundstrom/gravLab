@@ -7,6 +7,7 @@ use App\Beakers;
 use App\Job;
 use App\JobUnit;
 use App\JobBeakers;
+use App\Client;
 
 class JobBeakersController extends Controller
 {
@@ -59,17 +60,33 @@ class JobBeakersController extends Controller
     public function edit($id)
     {
         $job_id = Request::session()->get('job');
-        $jobBeakers = JobBeakers::where('jobUnit_id', $id);
+        $jobBeakers = JobBeakers::all()->where('jobUnit_id', $id);
 
         $client = Client::findOrFail(Request::session()->get('client'));
 
-        return view('jobBeakers.edit', compact('jobBeakers'));
+        return view('jobBeakers.edit', compact('jobBeakers', 'id'));
     }
 
-    public function update()
+    public function update($id)
     {
-        $input = Request::all();
+        $input = Request::except('_token', '_method');
 
-        return $input;
+        foreach($input as $beaker){
+            $beakerId = $beaker[6];
+            $beakerUpdate = JobBeakers::findOrFail($beakerId);
+
+            $beakerUpdate->pre_weight_1 = $beaker[0];
+            $beakerUpdate->pre_weight_2 = $beaker[1];
+            $beakerUpdate->post_weight_1 = $beaker[2];
+            $beakerUpdate->post_weight_2 = $beaker[3];
+            $beakerUpdate->runNumber = $beaker[4];
+            $beakerUpdate->description = $beaker[5];
+
+            $beakerUpdate->save();
+        }
+
+        $job_id = Request::session()->get('job');
+
+        return redirect()->action('JobController@show', ['job' => $job_id]);
     }
 }

@@ -39,7 +39,7 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2"><!--Company Info-->
+    <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
         <div class="panel-heading panel-title">
           <h4> Units to be Tested<a href="/jobUnits/create"><button class="btn btn-success pull-right">New</button></a></h4>
@@ -68,6 +68,7 @@
                   </ul>
                 </div>
                 <div class="tab-content">
+                <!-- Beaker Data -->
                   <div role ="tabpanel" class="tab-pane" id="beakers{{$unit->id}}">
                     <table class="table table-striped">
                       <tr>
@@ -78,34 +79,70 @@
                         <th> Post-Weight Average </th>
                       </tr>
                     @foreach($jobBeakers as $beaker)
-                      @php
-                        $pre_weight_difference = abs($beaker->pre_weight_1-$beaker->pre_weight_2);
+                      @if($beaker->jobUnit->id == $unit->id)
+                        @php
+                          $pre_weight_difference = number_format(abs($beaker->pre_weight_1-$beaker->pre_weight_2),5);
 
-                        $post_weight_difference = abs($beaker->post_weight_1-$beaker->post_weight_2);
-                      @endphp
-                      <tr>
-                        <td> {{$beaker->prefix}}{{$beaker->number}}</td>
-                        <td> {{$beaker->runNumber}}</td>
-                        <td> {{$beaker->description}}</td>
+                          $post_weight_difference = number_format(abs($beaker->post_weight_1-$beaker->post_weight_2),5);
+                        @endphp
+                        <tr>
+                          <td> {{$beaker->prefix}}{{$beaker->number}}</td>
+                          <td> {{$beaker->runNumber}}</td>
+                          <td> {{$beaker->description}}</td>
+                          @if($pre_weight_difference <= 0.0005)
+                            <td class="success"> {{$pre_weight_difference}} </td>
+                          @else
+                            <td class="danger"> {{$pre_weight_difference}} </td>
+                          @endif
 
-                        @if($pre_weight_difference <= 0.0005)
-                          <td class="success"> {{$pre_weight_difference}} </td>
-                        @else
-                          <td class="danger"> {{$pre_weight_difference}} </td>
-                        @endif
-
-                        @if($post_weight_difference <= 0.0005)
-                          <td class="success"> {{$post_weight_difference}} </td>
-                        @else
-                          <td class="danger"> {{$post_weight_difference}} </td>
-                        @endif
+                          @if($post_weight_difference <= 0.0005)
+                            <td class="success"> {{$post_weight_difference}} </td>
+                          @else
+                            <td class="danger"> {{$post_weight_difference}} </td>
+                          @endif
                       </tr>
+                      @endif
                     @endforeach
                     </table> 
-                    <a href="jobBeakers/{{$unit->id}}/edit" class="btn btn-block btn-warning" role="button"> Edit </a>
+                    <a href="/jobBeakers/{{$unit->id}}/edit" class="btn btn-block btn-warning" role="button"> Edit </a>
                   </div>
+                  <!-- Filter Data -->
                   <div role ="tabpanel" class="tab-pane" id="filters{{$unit->id}}">
-                  Content goes here
+                    <table class="table table-striped">
+                      <tr>
+                        <th> Beaker Number </th>
+                        <th> Run Number </th>
+                        <th> Description </th>
+                        <th> Pre-Weight Average </th>
+                        <th> Post-Weight Average </th>
+                      </tr>
+                    @foreach($jobBeakers as $beaker)
+                      @if($beaker->jobUnit->id == $unit->id)
+                        @php
+                          $pre_weight_difference = number_format(abs($beaker->pre_weight_1-$beaker->pre_weight_2),5);
+
+                          $post_weight_difference = number_format(abs($beaker->post_weight_1-$beaker->post_weight_2),5);
+                        @endphp
+                        <tr>
+                          <td> {{$beaker->prefix}}{{$beaker->number}}</td>
+                          <td> {{$beaker->runNumber}}</td>
+                          <td> {{$beaker->description}}</td>
+                          @if($pre_weight_difference <= 0.0005)
+                            <td class="success"> {{$pre_weight_difference}} </td>
+                          @else
+                            <td class="danger"> {{$pre_weight_difference}} </td>
+                          @endif
+
+                          @if($post_weight_difference <= 0.0005)
+                            <td class="success"> {{$post_weight_difference}} </td>
+                          @else
+                            <td class="danger"> {{$post_weight_difference}} </td>
+                          @endif
+                      </tr>
+                      @endif
+                    @endforeach
+                    </table> 
+                    <a href="/jobBeakers/{{$unit->id}}/edit" class="btn btn-block btn-warning" role="button"> Edit </a>
                   </div>
                 </div>
               </div>
