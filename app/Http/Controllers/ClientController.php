@@ -13,7 +13,7 @@ class ClientController extends Controller
 	{
 		$clients = Client::all();
 
-		return view('client.index', compact('clients'));		
+		return view('client.index', compact('clients'));
 	}
 
 	public function show($id)
@@ -33,7 +33,7 @@ class ClientController extends Controller
 			return view('client.show', compact('client', 'units', 'jobs'));
 	}
 
-	public function create()	
+	public function create()
 	{
 			return view('client.create');
 	}
@@ -63,6 +63,6 @@ class ClientController extends Controller
 
 			$clientId = $client['id'];
 
-         	return redirect()->action('ClientController@show', ['client' => $clientId]);
+      return redirect()->action('ClientController@show', ['client' => $clientId]);
 	}
 }

@@ -14,10 +14,10 @@ class JobBeakersWeightSizeUpdate extends Migration
     public function up()
     {
         Schema::table('JobBeakers', function (Blueprint $table) {
-            $table->double('pre_weight_1', 12, 5)->cahnge();
-            $table->double('pre_weight_2', 12, 5)->change();
-            $table->double('post_weight_1', 12, 5)->change();
-            $table->double('post_weight_2', 12, 5)->change();
+            $table->float('pre_weight_1', 12, 5)->change();
+            $table->float('pre_weight_2', 12, 5)->change();
+            $table->float('post_weight_1', 12, 5)->change();
+            $table->float('post_weight_2', 12, 5)->change();
 
         });
     }
